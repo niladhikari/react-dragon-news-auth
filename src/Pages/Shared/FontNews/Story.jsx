@@ -1,8 +1,10 @@
 import PropTypes from "prop-types";
 import { BsShare, BsBookmark, BsEyeFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const Story = ({ story }) => {
-  const { rating, total_view, title, author, thumbnail_url, details } = story;
+  const { _id, rating, total_view, title, author, thumbnail_url, details } =
+    story;
   return (
     <div className="">
       <div className="flex items-center justify-between bg-[#F3F3F3] mb-3 p-5">
@@ -22,8 +24,14 @@ const Story = ({ story }) => {
       <div className="px-5">
         <h2 className=" text-xl font-bold mb-5">{title}</h2>
         <img className="w-full h-96  mb-8" src={thumbnail_url} alt="" />
-        <p>{details} .......</p>
-        <p className="text-orange-400 mb-5">Read More</p>
+        {details.length > 200 ? (
+          <p>{details.slice(0, 200)}</p>
+        ) : (
+          <p>{details}</p>
+        )}
+        <Link to={`/news/${_id}`}>
+          <p className="text-[#FF8C47] font-bold mb-5">Read More...</p>
+        </Link>
         <hr />
         <div className="flex items-center justify-between mt-5 mb-8">
           <div className="flex items-center gap-2">
