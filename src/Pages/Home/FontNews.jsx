@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { BsShare, BsBookmark, BsEyeFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-const Story = ({ story }) => {
+const FontNews = ({ story }) => {
   const { _id, rating, total_view, title, author, thumbnail_url, details } =
     story;
   return (
@@ -110,8 +110,8 @@ const Story = ({ story }) => {
   );
 };
 
-Story.propTypes = {
+FontNews.propTypes = {
   story: PropTypes.object,
 };
 
-export default Story;
+export default FontNews;

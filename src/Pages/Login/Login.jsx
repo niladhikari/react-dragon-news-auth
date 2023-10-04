@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../Shared/Navbar/Navbar";
 import useAuth from "../../Hooks/useAuth";
 
 const Login = () => {
     const {userSignIn} = useAuth()
+    const location = useLocation()
+    const navigate = useNavigate()
 
     const handleLogin = (e)=>{
          e.preventDefault()
@@ -15,6 +17,8 @@ const Login = () => {
          userSignIn(email,password)
          .then((res)=>{
            console.log(res);
+           // navigate after login
+           navigate(location?.state ? location.state : '/');
          })
          .catch((error)=>{
             console.error(error);
